@@ -24,6 +24,9 @@ CREATE TABLE Product(
  image VARCHAR(255),
  description TEXT
 );
+ALTER TABLE Users
+ADD COLUMN phone VARCHAR(20) NULL,
+ADD COLUMN image VARCHAR(255) NULL;
 
 INSERT INTO Product(product_name,brand,price,quantity,image,description) VALUES
 ('Yonex Astrox 88D Pro','Yonex',3990000,15,'uploads/yonex-astrox-88d-pro.jpg','Vợt cầu lông Yonex Astrox 88D Pro.'),
