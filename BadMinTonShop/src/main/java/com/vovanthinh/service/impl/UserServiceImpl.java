@@ -61,4 +61,22 @@ public class UserServiceImpl implements UserService {
             throw new IllegalStateException(e);
         }
     }
+    @Override
+    public boolean updateProfile(int userId, String fullName, String phone, String image) {
+
+        if (fullName == null || fullName.isBlank()) {
+            return false;
+        }
+
+        if (phone == null) {
+            phone = "";
+        }
+
+        return dao.updateProfile(
+            userId,
+            fullName.trim(),
+            phone.trim(),
+            image
+        );
+    }
 }
