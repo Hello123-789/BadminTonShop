@@ -93,4 +93,40 @@ public class UserDAOImpl implements UserDAO {
             em.close();
         }
     }
+    @Override
+    public boolean updateProfile(int userId, String fullName, String phone, String image) {
+        EntityManager em = JPAUtil.getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+
+            User user = em.find(User.class, userId);
+
+            if (user == null) {
+                em.getTransaction().rollback();
+                return false;
+            }
+
+            user.setFullName(fullName);
+            user.setPhone(phone);
+
+            if (image != null && !image.isBlank()) {
+                user.setImage(image);
+            }
+
+            em.getTransaction().commit();
+            return true;
+
+        } catch (RuntimeException e) {
+
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+
+            throw e;
+
+        } finally {
+            em.close();
+        }
+    }
 }

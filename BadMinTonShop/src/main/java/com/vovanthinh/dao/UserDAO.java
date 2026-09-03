@@ -9,4 +9,5 @@ public interface UserDAO {
     boolean existsByUsername(String username);
     void insert(User user);
     boolean resetPassword(String username, String fullName, String passwordHash);
+    boolean updateProfile(int userId, String fullName, String phone, String image);
 }
