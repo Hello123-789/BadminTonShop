@@ -200,3 +200,33 @@ a {
     margin-top: -10px;
     margin-bottom: 14px;
 }
+.user-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-avatar {
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.default-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #555;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 500;
+}

@@ -96,7 +96,8 @@
     <% } %>
 
     <form action="${pageContext.request.contextPath}/profile"
-          method="post">
+      method="post"
+      enctype="multipart/form-data">
 
         <div class="form-group">
             <label>Tên đăng nhập</label>
@@ -122,6 +123,22 @@
                    name="phone"
                    value="${user.phone}">
         </div>
+        
+       <c:if test="${not empty user.image}">
+    <div class="form-group">
+        <label>Ảnh hiện tại</label>
+
+        <img src="${pageContext.request.contextPath}/${user.image}"
+             width="120"
+             height="120"
+             style="object-fit: cover; border-radius: 8px;">
+    </div>
+		</c:if>
+
+    <input type="file"
+           name="image"
+           accept="image/*">
+		</div>
 
         <button type="submit">
             Cập nhật thông tin

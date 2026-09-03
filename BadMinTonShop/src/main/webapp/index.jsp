@@ -19,18 +19,47 @@
                 <a href="${pageContext.request.contextPath}/cart">Giỏ hàng</a>
 
                 <c:choose>
-                    <c:when test="${not empty sessionScope.authUser}">
-                        <c:if test="${sessionScope.authUser.role == 'ADMIN'}">
-                            <a href="${pageContext.request.contextPath}/admin/product/list">
-                                Quản trị
-                            </a>
-                        </c:if>
+                  <c:when test="${not empty sessionScope.authUser}">
 
-                        <span>Xin chào, ${sessionScope.authUser.fullName}</span>
-                        <a href="${pageContext.request.contextPath}/logout">
-                            Đăng xuất
-                        </a>
-                    </c:when>
+    <c:if test="${sessionScope.authUser.role == 'ADMIN'}">
+
+        <a href="${pageContext.request.contextPath}/admin/product/list">
+            Quản trị
+        </a>
+
+    </c:if>
+
+    <a href="${pageContext.request.contextPath}/profile"
+       class="user-profile">
+
+        <c:choose>
+
+            <c:when test="${not empty sessionScope.authUser.image}">
+                <img
+                    src="${pageContext.request.contextPath}/${sessionScope.authUser.image}"
+                    alt="Ảnh đại diện"
+                    class="user-avatar">
+            </c:when>
+
+            <c:otherwise>
+                <div class="user-avatar default-avatar">
+                    ${sessionScope.authUser.fullName.substring(0,1)}
+                </div>
+            </c:otherwise>
+
+        </c:choose>
+
+        <span class="user-name">
+            ${sessionScope.authUser.fullName}
+        </span>
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/logout">
+        Đăng xuất
+    </a>
+
+</c:when>
 
                     <c:otherwise>
                         <a href="${pageContext.request.contextPath}/login">
