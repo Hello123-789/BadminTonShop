@@ -39,6 +39,12 @@ public class User implements Serializable {
     @Column(name = "active", nullable = false)
     private boolean active = true;
 
+    @Column(name = "phone", length = 20)
+    private String phone;
+
+    @Column(name = "image", length = 255)
+    private String image;
+    
     public User() {}
 
     public int getUserId() { return userId; }
@@ -55,4 +61,19 @@ public class User implements Serializable {
     public void setRememberToken(String rememberToken) { this.rememberToken = rememberToken; }
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
