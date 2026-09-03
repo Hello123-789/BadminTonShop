@@ -209,11 +209,14 @@ a {
 }
 
 .user-avatar {
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #ddd;
+    width: 38px !important;
+    height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid #ffffff;
+    display: inline-block;
 }
 
 .default-avatar {

@@ -38,11 +38,13 @@
                 <img
                     src="${pageContext.request.contextPath}/${sessionScope.authUser.image}"
                     alt="Ảnh đại diện"
-                    class="user-avatar">
+                    class="user-avatar"
+                    style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #ffffff; display: inline-block; vertical-align: middle;">
             </c:when>
 
             <c:otherwise>
-                <div class="user-avatar default-avatar">
+                <div class="user-avatar default-avatar"
+                     style="width: 38px; height: 38px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; vertical-align: middle;">
                     ${sessionScope.authUser.fullName.substring(0,1)}
                 </div>
             </c:otherwise>
