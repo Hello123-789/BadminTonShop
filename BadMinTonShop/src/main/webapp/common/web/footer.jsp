@@ -16,27 +16,27 @@
                     <i class="bi bi-star-fill me-2"></i>Vận Động Viên Đại Diện
                 </h6>
                 <div class="d-flex flex-wrap gap-3">
-                    <div class="text-center" style="width: 75px;">
-                        <img src="https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=120&h=120&q=80" 
-                             alt="Viktor Axelsen" class="rounded-circle border border-2 border-warning mb-1" style="width: 55px; height: 55px; object-fit: cover;">
+                    <div class="text-center" style="width: 80px;">
+                        <img src="https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=160&h=200&q=80" 
+                             alt="Viktor Axelsen" class="img-fluid rounded mb-1" style="height: 85px; width: 75px; object-fit: cover;">
                         <div class="text-light" style="font-size: 11px; font-weight: 600;">Axelsen</div>
                         <div class="text-warning" style="font-size: 10px;">Yonex</div>
                     </div>
-                    <div class="text-center" style="width: 75px;">
-                        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=120&h=120&q=80" 
-                             alt="Lee Zii Jia" class="rounded-circle border border-2 border-warning mb-1" style="width: 55px; height: 55px; object-fit: cover;">
+                    <div class="text-center" style="width: 80px;">
+                        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=160&h=200&q=80" 
+                             alt="Lee Zii Jia" class="img-fluid rounded mb-1" style="height: 85px; width: 75px; object-fit: cover;">
                         <div class="text-light" style="font-size: 11px; font-weight: 600;">Lee Zii Jia</div>
                         <div class="text-warning" style="font-size: 10px;">Victor</div>
                     </div>
-                    <div class="text-center" style="width: 75px;">
-                        <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=120&h=120&q=80" 
-                             alt="An Se-young" class="rounded-circle border border-2 border-warning mb-1" style="width: 55px; height: 55px; object-fit: cover;">
+                    <div class="text-center" style="width: 80px;">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=160&h=200&q=80" 
+                             alt="An Se-young" class="img-fluid rounded mb-1" style="height: 85px; width: 75px; object-fit: cover;">
                         <div class="text-light" style="font-size: 11px; font-weight: 600;">An Se-young</div>
                         <div class="text-warning" style="font-size: 10px;">Yonex</div>
                     </div>
-                    <div class="text-center" style="width: 75px;">
-                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=120&h=120&q=80" 
-                             alt="Shi Yu Qi" class="rounded-circle border border-2 border-warning mb-1" style="width: 55px; height: 55px; object-fit: cover;">
+                    <div class="text-center" style="width: 80px;">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=160&h=200&q=80" 
+                             alt="Shi Yu Qi" class="img-fluid rounded mb-1" style="height: 85px; width: 75px; object-fit: cover;">
                         <div class="text-light" style="font-size: 11px; font-weight: 600;">Shi Yu Qi</div>
                         <div class="text-warning" style="font-size: 10px;">Lining</div>
                     </div>
