@@ -1,6 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<!-- Top Athlete Announcement Bar -->
+<div class="bg-primary text-white py-1 px-3" style="font-size: 0.85rem;">
+    <div class="container d-flex justify-content-between align-items-center">
+        <span>
+            <i class="bi bi-award-fill text-warning me-1"></i> Đồng hành cùng các VĐV hàng đầu thế giới (Viktor Axelsen, Lee Zii Jia, An Se-young)
+        </span>
+        <span class="d-none d-md-inline">
+            <i class="bi bi-shield-check me-1"></i> Cam kết 100% Vợt Cầu Lông Chính Hãng
+        </span>
+    </div>
+</div>
+
 <!-- Web Header Component -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
