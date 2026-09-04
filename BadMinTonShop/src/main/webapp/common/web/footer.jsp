@@ -47,9 +47,9 @@
             <div class="col-md-4 mb-3">
                 <h6 class="text-uppercase fw-bold text-light mb-3">Liên hệ</h6>
                 <ul class="list-unstyled text-muted small">
-                    <li><i class="bi bi-geo-alt-fill me-2 text-warning"></i>Địa chỉ: TP. Hồ Chí Minh</li>
-                    <li><i class="bi bi-telephone-fill me-2 text-warning"></i>Hotline: 0900 123 456</li>
-                    <li><i class="bi bi-envelope-fill me-2 text-warning"></i>Email: contact@badmintonshop.com</li>
+                    <li><i class="bi bi-geo-alt-fill me-2 text-warning"></i>Địa chỉ: Tăng Nhơn Phú A, TP. Thủ Đức, TP.HCM</li>
+                    <li><i class="bi bi-telephone-fill me-2 text-warning"></i>Hotline: 0123456789</li>
+                    <li><i class="bi bi-envelope-fill me-2 text-warning"></i>Email: votchinhhang@gmail.com</li>
                 </ul>
             </div>
         </div>
