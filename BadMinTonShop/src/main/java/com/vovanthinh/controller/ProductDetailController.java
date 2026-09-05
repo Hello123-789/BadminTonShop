@@ -7,7 +7,7 @@ import jakarta.servlet.http.*;
 import com.vovanthinh.service.ProductService;
 import com.vovanthinh.service.impl.ProductServiceImpl;
 
-@WebServlet("/product/detail")
+@WebServlet({"/product/detail","/product-detail"})
 public class ProductDetailController extends HttpServlet {
 
     private final ProductService service = new ProductServiceImpl();
