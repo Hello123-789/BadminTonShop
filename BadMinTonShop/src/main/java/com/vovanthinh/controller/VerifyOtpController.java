@@ -1,0 +1,5 @@
+package com.vovanthinh.controller;
+import java.io.IOException;import jakarta.servlet.*;import jakarta.servlet.annotation.WebServlet;import jakarta.servlet.http.*;import com.vovanthinh.service.UserService;import com.vovanthinh.service.impl.UserServiceImpl;
+@WebServlet("/verify-otp") public class VerifyOtpController extends HttpServlet{private final UserService service=new UserServiceImpl();
+ protected void doGet(HttpServletRequest r,HttpServletResponse s)throws ServletException,IOException{if(r.getSession().getAttribute("verifyUsername")==null){s.sendRedirect(r.getContextPath()+"/register");return;}r.getRequestDispatcher("/verify-otp.jsp").forward(r,s);}
+ protected void doPost(HttpServletRequest r,HttpServletResponse s)throws ServletException,IOException{r.setCharacterEncoding("UTF-8");String u=(String)r.getSession().getAttribute("verifyUsername"),otp=r.getParameter("otp");if(service.verifyOtp(u,otp)){r.getSession().removeAttribute("verifyUsername");s.sendRedirect(r.getContextPath()+"/login?verified=1");}else{r.setAttribute("error","OTP không đúng hoặc đã hết hạn.");r.getRequestDispatcher("/verify-otp.jsp").forward(r,s);}}}

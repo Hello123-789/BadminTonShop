@@ -1,61 +1,8 @@
 package com.vovanthinh.controller;
-
-import java.io.IOException;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-import com.vovanthinh.service.UserService;
-import com.vovanthinh.service.impl.UserServiceImpl;
-
-@WebServlet("/forgot-password")
-public class ForgotPasswordController extends HttpServlet {
-
-    private final UserService service = new UserServiceImpl();
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        req.getRequestDispatcher("/forgot-password.jsp").forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
-        req.setCharacterEncoding("UTF-8");
-
-        String username = req.getParameter("username");
-        String fullName = req.getParameter("fullName");
-        String password = req.getParameter("newPassword");
-        String confirm = req.getParameter("confirmPassword");
-
-        if (password == null || !password.equals(confirm)) {
-            req.setAttribute("error", "Mật khẩu xác nhận không khớp.");
-            req.getRequestDispatcher("/forgot-password.jsp").forward(req, resp);
-            return;
-        }
-
-        if (password.length() < 6) {
-            req.setAttribute("error", "Mật khẩu mới phải có ít nhất 6 ký tự.");
-            req.getRequestDispatcher("/forgot-password.jsp").forward(req, resp);
-            return;
-        }
-
-        boolean reset = service.resetPassword(username, fullName, password);
-
-        if (reset) {
-            resp.sendRedirect(req.getContextPath() + "/login?reset=1");
-            return;
-        }
-
-        req.setAttribute(
-                "error",
-                "Không tìm thấy tài khoản phù hợp với tên đăng nhập và họ tên."
-        );
-        req.getRequestDispatcher("/forgot-password.jsp").forward(req, resp);
-    }
+import java.io.IOException;import jakarta.servlet.*;import jakarta.servlet.annotation.WebServlet;import jakarta.servlet.http.*;import com.vovanthinh.service.UserService;import com.vovanthinh.service.impl.UserServiceImpl;
+@WebServlet("/forgot-password") public class ForgotPasswordController extends HttpServlet{private final UserService service=new UserServiceImpl();
+ protected void doGet(HttpServletRequest r,HttpServletResponse s)throws ServletException,IOException{r.getRequestDispatcher("/forgot-password.jsp").forward(r,s);}
+ protected void doPost(HttpServletRequest r,HttpServletResponse s)throws ServletException,IOException{r.setCharacterEncoding("UTF-8");HttpSession session=r.getSession();String value=r.getParameter("usernameOrEmail"),otp=r.getParameter("otp"),p=r.getParameter("newPassword"),c=r.getParameter("confirmPassword");
+  if(otp==null||otp.isBlank()){if(value==null||value.isBlank()||!service.sendForgotPasswordOtp(value)){r.setAttribute("error","Không tìm thấy tài khoản hoặc không thể gửi OTP.");r.getRequestDispatcher("/forgot-password.jsp").forward(r,s);return;}session.setAttribute("forgotValue",value.trim());r.setAttribute("verifyMode",true);r.getRequestDispatcher("/forgot-password.jsp").forward(r,s);return;}
+  String saved=(String)session.getAttribute("forgotValue");if(saved==null||p==null||!p.equals(c)||p.length()<6||!service.resetPasswordWithOtp(saved,otp,p)){r.setAttribute("verifyMode",true);r.setAttribute("error",p==null||p.length()<6?"Mật khẩu mới phải có ít nhất 6 ký tự.":!p.equals(c)?"Mật khẩu xác nhận không khớp.":"OTP không đúng hoặc đã hết hạn.");r.getRequestDispatcher("/forgot-password.jsp").forward(r,s);return;}session.removeAttribute("forgotValue");s.sendRedirect(r.getContextPath()+"/login?reset=1");}
 }

@@ -1,6 +1,7 @@
 package com.vovanthinh.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +31,9 @@ public class User implements Serializable {
     @Column(name = "full_name", nullable = false, length = 100)
     private String fullName;
 
+    @Column(name = "email", length = 100)
+    private String email;
+
     @Column(name = "role", nullable = false, length = 20)
     private String role = "USER";
 
@@ -44,6 +48,12 @@ public class User implements Serializable {
 
     @Column(name = "image", length = 255)
     private String image;
+
+    @Column(name = "otp_code", length = 10)
+    private String otpCode;
+
+    @Column(name = "otp_expiry")
+    private LocalDateTime otpExpiry;
     
     public User() {}
 
@@ -55,25 +65,21 @@ public class User implements Serializable {
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
     public String getFullName() { return fullName; }
     public void setFullName(String fullName) { this.fullName = fullName; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
     public String getRememberToken() { return rememberToken; }
     public void setRememberToken(String rememberToken) { this.rememberToken = rememberToken; }
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+    public String getImage() { return image; }
+    public void setImage(String image) { this.image = image; }
+    public String getOtpCode() { return otpCode; }
+    public void setOtpCode(String otpCode) { this.otpCode = otpCode; }
+    public LocalDateTime getOtpExpiry() { return otpExpiry; }
+    public void setOtpExpiry(LocalDateTime otpExpiry) { this.otpExpiry = otpExpiry; }
 }
+
