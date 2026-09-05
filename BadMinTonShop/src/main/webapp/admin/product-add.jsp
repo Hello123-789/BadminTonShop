@@ -47,6 +47,12 @@
                        min="0"
                        required>
 
+                <label>Danh mục</label>
+                <select name="categoryId" required>
+                    <option value="">-- Chọn danh mục --</option>
+                    <c:forEach var="c" items="${categories}"><option value="${c.cateId}">${c.cateName}</option></c:forEach>
+                </select>
+
                 <label>Ảnh sản phẩm</label>
                 <input type="file"
                        name="image"

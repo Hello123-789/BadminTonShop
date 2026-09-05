@@ -8,6 +8,7 @@
 
         <class>com.vovanthinh.model.Product</class>
         <class>com.vovanthinh.model.User</class>
+        <class>com.vovanthinh.model.Category</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

@@ -10,9 +10,13 @@
         <h3 class="fw-bold text-primary mb-0">
             <i class="bi bi-tags-fill me-2"></i>Quản Lý Danh Mục
         </h3>
-        <a href="#" class="btn btn-success">
-            <i class="bi bi-plus-lg me-1"></i>Thêm Danh Mục Mới
-        </a>
+        <form action="${pageContext.request.contextPath}/admin/category/list" method="post" style="display:flex;gap:8px;">
+            <input name="cateName" placeholder="Tên danh mục" required>
+            <input name="icons" placeholder="Icon URL (tuỳ chọn)">
+            <button type="submit" class="btn btn-success">
+            <i class="bi bi-plus-lg me-1"></i>Thêm
+            </button>
+        </form>
     </div>
 
     <div class="table-responsive">
