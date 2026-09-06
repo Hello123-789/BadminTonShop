@@ -105,6 +105,69 @@ public class ProductDAOImpl implements ProductDAO {
         }
     }
 
+    @Override
+    public List<Product> findPagingFiltered(Integer categoryId, String brand, String keyword, int page, int pageSize) {
+        int safePage = Math.max(1, page);
+        int safeSize = Math.max(1, pageSize);
+        try (EntityManager em = JPAUtil.getEntityManager()) {
+            StringBuilder hql = new StringBuilder("SELECT p FROM Product p LEFT JOIN FETCH p.category WHERE 1=1 ");
+            if (categoryId != null && categoryId > 0) {
+                hql.append("AND p.category.cateId = :categoryId ");
+            }
+            if (brand != null && !brand.isBlank()) {
+                hql.append("AND LOWER(p.brand) = :brand ");
+            }
+            if (keyword != null && !keyword.isBlank()) {
+                hql.append("AND (LOWER(p.productName) LIKE :kw OR LOWER(p.brand) LIKE :kw) ");
+            }
+            hql.append("ORDER BY p.productId DESC");
+
+            var query = em.createQuery(hql.toString(), Product.class);
+            if (categoryId != null && categoryId > 0) {
+                query.setParameter("categoryId", categoryId);
+            }
+            if (brand != null && !brand.isBlank()) {
+                query.setParameter("brand", brand.trim().toLowerCase());
+            }
+            if (keyword != null && !keyword.isBlank()) {
+                query.setParameter("kw", "%" + keyword.trim().toLowerCase() + "%");
+            }
+
+            return query.setFirstResult((safePage - 1) * safeSize)
+                    .setMaxResults(safeSize)
+                    .getResultList();
+        }
+    }
+
+    @Override
+    public long countTotalFiltered(Integer categoryId, String brand, String keyword) {
+        try (EntityManager em = JPAUtil.getEntityManager()) {
+            StringBuilder hql = new StringBuilder("SELECT COUNT(p) FROM Product p WHERE 1=1 ");
+            if (categoryId != null && categoryId > 0) {
+                hql.append("AND p.category.cateId = :categoryId ");
+            }
+            if (brand != null && !brand.isBlank()) {
+                hql.append("AND LOWER(p.brand) = :brand ");
+            }
+            if (keyword != null && !keyword.isBlank()) {
+                hql.append("AND (LOWER(p.productName) LIKE :kw OR LOWER(p.brand) LIKE :kw) ");
+            }
+
+            var query = em.createQuery(hql.toString(), Long.class);
+            if (categoryId != null && categoryId > 0) {
+                query.setParameter("categoryId", categoryId);
+            }
+            if (brand != null && !brand.isBlank()) {
+                query.setParameter("brand", brand.trim().toLowerCase());
+            }
+            if (keyword != null && !keyword.isBlank()) {
+                query.setParameter("kw", "%" + keyword.trim().toLowerCase() + "%");
+            }
+
+            return query.getSingleResult();
+        }
+    }
+
     private void executeInTransaction(Consumer<EntityManager> action) {
         EntityManager em = JPAUtil.getEntityManager();
         try {

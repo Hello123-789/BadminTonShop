@@ -12,5 +12,7 @@ public interface ProductService {
     List<Product> search(String keyword);
     List<Product> getTop10Newest();
     List<Product> getPaging(int page, int pageSize);
+    List<Product> getPagingFiltered(Integer categoryId, String brand, String keyword, int page, int pageSize);
     long countTotalProducts();
+    long countTotalFiltered(Integer categoryId, String brand, String keyword);
 }

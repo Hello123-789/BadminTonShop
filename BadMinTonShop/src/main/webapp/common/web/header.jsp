@@ -28,20 +28,56 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="${pageContext.request.contextPath}/home">Trang chủ</a>
                 </li>
+                <!-- Category Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-warning fw-bold" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-grid-fill me-1"></i>Danh Mục
+                    </a>
+                    <ul class="dropdown-menu shadow">
+                        <li>
+                            <a class="dropdown-item fw-bold" href="${pageContext.request.contextPath}/product">
+                                <i class="bi bi-collection me-2 text-primary"></i>Tất cả sản phẩm
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/product?categoryId=1">
+                                <i class="bi bi-lightning-fill me-2 text-warning"></i>Vợt Cầu Lông
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/product?categoryId=3">
+                                <i class="bi bi-badge-ad-fill me-2 text-success"></i>Giày Cầu Lông
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/product?categoryId=2">
+                                <i class="bi bi-box-seam-fill me-2 text-info"></i>Phụ Kiện Cầu Lông
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Brands -->
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/home?brand=Yonex">Yonex</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/product?brand=Yonex">Yonex</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/home?brand=Lining">Lining</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/product?brand=Li-Ning">Li-Ning</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/home?brand=Victor">Victor</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/product?brand=Victor">Victor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/product?brand=Mizuno">Mizuno</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-info fw-bold" href="${pageContext.request.contextPath}/product?brand=Apacs">Apacs</a>
                 </li>
             </ul>
             
-            <form class="d-flex me-3" action="${pageContext.request.contextPath}/home" method="get">
+            <form class="d-flex me-3" action="${pageContext.request.contextPath}/product" method="get">
                 <div class="input-group">
-                    <input class="form-control" type="search" name="keyword" placeholder="Tìm vợt cầu lông..." value="${param.keyword}">
+                    <input class="form-control" type="search" name="keyword" placeholder="Tìm sản phẩm, thương hiệu..." value="${param.keyword}">
                     <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
                 </div>
             </form>

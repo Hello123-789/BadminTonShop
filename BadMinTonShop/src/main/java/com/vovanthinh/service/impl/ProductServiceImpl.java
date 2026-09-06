@@ -52,7 +52,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getPagingFiltered(Integer categoryId, String brand, String keyword, int page, int pageSize) {
+        return productDAO.findPagingFiltered(categoryId, brand, keyword, page, pageSize);
+    }
+
+    @Override
     public long countTotalProducts() {
         return productDAO.countTotalProducts();
+    }
+
+    @Override
+    public long countTotalFiltered(Integer categoryId, String brand, String keyword) {
+        return productDAO.countTotalFiltered(categoryId, brand, keyword);
     }
 }

@@ -12,5 +12,7 @@ public interface ProductDAO {
     List<Product> search(String keyword);
     List<Product> findTop10Newest();
     List<Product> findPaging(int page, int pageSize);
+    List<Product> findPagingFiltered(Integer categoryId, String brand, String keyword, int page, int pageSize);
     long countTotalProducts();
+    long countTotalFiltered(Integer categoryId, String brand, String keyword);
 }

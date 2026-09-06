@@ -364,6 +364,36 @@ VALUES
     'uploads/voltriczforce2.jpg',
     'Vợt cầu lông Yonex Voltric Z Force II.',
     1
+),
+
+(
+    'Apacs Honor Pro',
+    'Apacs',
+    1800000,
+    15,
+    'uploads/apacshonor.jpg',
+    'Vợt cầu lông Apacs Honor Pro cao cấp.',
+    1
+),
+
+(
+    'Apacs Z Ziggler',
+    'Apacs',
+    1200000,
+    20,
+    'uploads/apacsziggler.jpg',
+    'Vợt cầu lông Apacs Z Ziggler trợ lực tốt.',
+    1
+),
+
+(
+    'Apacs Pro Commander',
+    'Apacs',
+    1950000,
+    12,
+    'uploads/apacspro.jpg',
+    'Vợt cầu lông Apacs Pro Commander chuyên công.',
+    1
 );
 
 
