@@ -53,27 +53,52 @@
                     </a>
                 </li>
                 <c:choose>
-                    <c:when test="${not empty sessionScope.account}">
+                    <c:when test="${not empty sessionScope.authUser || not empty sessionScope.account}">
+                        <c:set var="currentUser" value="${not empty sessionScope.authUser ? sessionScope.authUser : sessionScope.account}" />
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-person-circle me-1"></i> ${sessionScope.account.username}
+                            <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <c:choose>
+                                    <c:when test="${not empty currentUser.image}">
+                                        <img src="${pageContext.request.contextPath}/${currentUser.image}" class="rounded-circle me-2 border border-warning" width="28" height="28" style="object-fit: cover;">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <i class="bi bi-person-circle me-1 fs-5"></i>
+                                    </c:otherwise>
+                                </c:choose>
+                                <span>${not empty currentUser.fullName ? currentUser.fullName : currentUser.username}</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/profile">Thông tin cá nhân</a></li>
-                                <c:if test="${sessionScope.account.role == 'ADMIN'}">
-                                    <li><a class="dropdown-item text-danger fw-bold" href="${pageContext.request.contextPath}/admin/category/list">Trang Quản Trị</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/profile">
+                                        <i class="bi bi-person-gear me-2 text-primary"></i>Thông tin cá nhân
+                                    </a>
+                                </li>
+                                <c:if test="${currentUser.role == 'ADMIN'}">
+                                    <li>
+                                        <a class="dropdown-item text-danger fw-bold" href="${pageContext.request.contextPath}/admin/category">
+                                            <i class="bi bi-speedometer2 me-2"></i>Trang Quản Trị
+                                        </a>
+                                    </li>
                                 </c:if>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Đăng xuất</a></li>
+                                <li>
+                                    <a class="dropdown-item text-muted" href="${pageContext.request.contextPath}/logout">
+                                        <i class="bi bi-box-arrow-right me-2"></i>Đăng xuất
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="btn btn-warning text-dark me-2" href="${pageContext.request.contextPath}/login">Đăng nhập</a>
+                            <a class="btn btn-warning text-dark me-2" href="${pageContext.request.contextPath}/login">
+                                <i class="bi bi-box-arrow-in-right me-1"></i>Đăng nhập
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-warning" href="${pageContext.request.contextPath}/register">Đăng ký</a>
+                            <a class="btn btn-outline-warning" href="${pageContext.request.contextPath}/register">
+                                <i class="bi bi-person-plus me-1"></i>Đăng ký
+                            </a>
                         </li>
                     </c:otherwise>
                 </c:choose>
