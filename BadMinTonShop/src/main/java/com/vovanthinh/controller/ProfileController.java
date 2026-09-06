@@ -80,13 +80,35 @@ public class ProfileController extends HttpServlet {
         String fullName = request.getParameter("fullName");
         String phone = request.getParameter("phone");
 
-        Part imagePart = request.getPart("image");
+        // Server-side validation
+        if (fullName == null || fullName.isBlank()) {
+            request.setAttribute("error", "Họ và tên không được để trống.");
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(request, response);
+            return;
+        }
 
+        if (phone != null && !phone.isBlank() && !phone.matches("^[0-9]{10}$")) {
+            request.setAttribute("error", "Số điện thoại không hợp lệ (phải gồm 10 chữ số).");
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(request, response);
+            return;
+        }
+
+        Part imagePart = request.getPart("image");
         String imagePath = null;
 
         if (imagePart != null && imagePart.getSize() > 0) {
-
             String originalName = imagePart.getSubmittedFileName();
+            if (originalName != null) {
+                String lowerName = originalName.toLowerCase();
+                if (!lowerName.endsWith(".jpg") && !lowerName.endsWith(".jpeg") && !lowerName.endsWith(".png") && !lowerName.endsWith(".webp")) {
+                    request.setAttribute("error", "Ảnh đại diện chỉ hỗ trợ định dạng JPG, JPEG, PNG, WEBP.");
+                    request.setAttribute("user", user);
+                    request.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(request, response);
+                    return;
+                }
+            }
 
             String extension = "";
 
