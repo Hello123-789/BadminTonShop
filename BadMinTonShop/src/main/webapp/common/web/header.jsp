@@ -42,17 +42,17 @@
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/product?categoryId=1">
-                                <i class="bi bi-lightning-fill me-2 text-warning"></i>Vợt Cầu Lông
+                               Vợt Cầu Lông
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/product?categoryId=3">
-                                <i class="bi bi-badge-ad-fill me-2 text-success"></i>Giày Cầu Lông
+                               Giày Cầu Lông
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/product?categoryId=2">
-                                <i class="bi bi-box-seam-fill me-2 text-info"></i>Phụ Kiện Cầu Lông
+                                Phụ Kiện Cầu Lông
                             </a>
                         </li>
                     </ul>

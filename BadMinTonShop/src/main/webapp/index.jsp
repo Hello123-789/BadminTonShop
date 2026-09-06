@@ -27,7 +27,7 @@
                 <i class="bi bi-bag-check-fill me-2"></i>Xem Tất Cả Sản Phẩm
             </a>
             <a class="btn btn-outline-light btn-lg px-4" href="${pageContext.request.contextPath}/product?categoryId=1">
-                <i class="bi bi-lightning-fill me-1 text-warning"></i>Vợt Cầu Lông
+               Vợt Cầu Lông
             </a>
         </div>
     </div>
@@ -44,14 +44,17 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <!-- Category 1: Vợt Cầu Lông -->
         <div class="col">
-            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden text-white bg-primary position-relative">
+            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden text-center bg-white border border-light">
+                <div class="p-3 bg-light text-center rounded-top position-relative" style="height: 190px; display: flex; align-items: center; justify-content: center;">
+                    <span class="position-absolute top-0 start-0 m-2 badge bg-primary px-3 py-2">Vợt Cầu Lông</span>
+                    <img src="${pageContext.request.contextPath}/images/uploads/astrox100zz.jpg" class="img-fluid" alt="Vợt Cầu Lông" style="max-height: 160px; object-fit: contain;">
+                </div>
                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                     <div>
-                        <span class="fs-1"><i class="bi bi-lightning-charge-fill text-warning"></i></span>
-                        <h4 class="fw-bold text-white mt-2">Vợt Cầu Lông</h4>
-                        <p class="card-text text-white-50">Tất cả mẫu vợt công, thủ, toàn diện từ Yonex, Victor, Li-Ning, Mizuno, Apacs.</p>
+                       <h5 class="fw-bold text-dark mb-2">Vợt Cầu Lông</h5>
+                        <p class="card-text text-muted small">Tất cả mẫu vợt công, thủ, toàn diện từ Yonex, Victor, Li-Ning, Mizuno, Apacs.</p>
                     </div>
-                    <a href="${pageContext.request.contextPath}/product?categoryId=1" class="btn btn-light text-primary fw-bold mt-3 align-self-start rounded-pill">
+                    <a href="${pageContext.request.contextPath}/product?categoryId=1" class="btn btn-primary fw-bold mt-3 rounded-pill">
                         Khám phá Vợt <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -60,14 +63,17 @@
 
         <!-- Category 3: Giày Cầu Lông -->
         <div class="col">
-            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden text-white bg-success position-relative">
+            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden text-center bg-white border border-light">
+                <div class="p-3 bg-light text-center rounded-top position-relative" style="height: 190px; display: flex; align-items: center; justify-content: center;">
+                    <span class="position-absolute top-0 start-0 m-2 badge bg-success px-3 py-2">Giày Cầu Lông</span>
+                    <img src="${pageContext.request.contextPath}/images/uploads/65z3.jpg" class="img-fluid" alt="Giày Cầu Lông" style="max-height: 160px; object-fit: contain;">
+                </div>
                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                     <div>
-                        <span class="fs-1"><i class="bi bi-badge-ad-fill text-white"></i></span>
-                        <h4 class="fw-bold text-white mt-2">Giày Cầu Lông</h4>
-                        <p class="card-text text-white-50">Giày êm ái, bám sân cực tốt, công nghệ đế giảm chấn tối ưu.</p>
+                        <h5 class="fw-bold text-dark mb-2">Giày Cầu Lông</h5>
+                        <p class="card-text text-muted small">Giày êm ái, bám sân cực tốt, công nghệ đế giảm chấn tối ưu.</p>
                     </div>
-                    <a href="${pageContext.request.contextPath}/product?categoryId=3" class="btn btn-light text-success fw-bold mt-3 align-self-start rounded-pill">
+                    <a href="${pageContext.request.contextPath}/product?categoryId=3" class="btn btn-success fw-bold mt-3 rounded-pill">
                         Khám phá Giày <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -76,14 +82,17 @@
 
         <!-- Category 2: Phụ Kiện -->
         <div class="col">
-            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden text-white bg-info position-relative">
+            <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden text-center bg-white border border-light">
+                <div class="p-3 bg-light text-center rounded-top position-relative" style="height: 190px; display: flex; align-items: center; justify-content: center;">
+                    <span class="position-absolute top-0 start-0 m-2 badge bg-info text-white px-3 py-2">Phụ Kiện</span>
+                    <img src="${pageContext.request.contextPath}/images/uploads/aerosensa50.jpg" class="img-fluid" alt="Phụ Kiện Cầu Lông" style="max-height: 160px; object-fit: contain;">
+                </div>
                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                     <div>
-                        <span class="fs-1"><i class="bi bi-box-seam-fill text-white"></i></span>
-                        <h4 class="fw-bold text-white mt-2">Phụ Kiện Cầu Lông</h4>
-                        <p class="card-text text-white-50">Cầu lông, quấn cán vợt, vớ thể thao, túi bao vợt chính hãng.</p>
+                        <h5 class="fw-bold text-dark mb-2">Phụ Kiện Cầu Lông</h5>
+                        <p class="card-text text-muted small">Cầu lông, quấn cán vợt, vớ thể thao, túi bao vợt chính hãng.</p>
                     </div>
-                    <a href="${pageContext.request.contextPath}/product?categoryId=2" class="btn btn-light text-info fw-bold mt-3 align-self-start rounded-pill">
+                    <a href="${pageContext.request.contextPath}/product?categoryId=2" class="btn btn-info text-white fw-bold mt-3 rounded-pill">
                         Khám phá Phụ Kiện <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
