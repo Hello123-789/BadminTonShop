@@ -38,13 +38,18 @@ public class ProfileController extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
+        User user = null;
+        if (session != null) {
+            user = (User) session.getAttribute("authUser");
+            if (user == null) {
+                user = (User) session.getAttribute("account");
+            }
+        }
 
-        if (session == null || session.getAttribute("authUser") == null) {
+        if (user == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
-
-        User user = (User) session.getAttribute("authUser");
 
         request.setAttribute("user", user);
 
@@ -59,13 +64,18 @@ public class ProfileController extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
+        User user = null;
+        if (session != null) {
+            user = (User) session.getAttribute("authUser");
+            if (user == null) {
+                user = (User) session.getAttribute("account");
+            }
+        }
 
-        if (session == null || session.getAttribute("authUser") == null) {
+        if (user == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
-
-        User user = (User) session.getAttribute("authUser");
 
         String fullName = request.getParameter("fullName");
         String phone = request.getParameter("phone");
@@ -121,6 +131,7 @@ public class ProfileController extends HttpServlet {
             }
 
             session.setAttribute("authUser", user);
+            session.setAttribute("account", user);
 
             response.sendRedirect(
                     request.getContextPath() + "/profile?success=1"

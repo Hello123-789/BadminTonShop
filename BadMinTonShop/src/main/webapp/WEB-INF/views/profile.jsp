@@ -1,152 +1,118 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<!DOCTYPE html>
-<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Thông tin cá nhân</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 40px;
-        }
-
-        .profile-container {
-            width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        input[readonly] {
-            background: #eee;
-        }
-
-        button {
-            width: 100%;
-            padding: 11px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .success {
-            padding: 10px;
-            margin-bottom: 15px;
-            background: #d4edda;
-            color: #155724;
-            border-radius: 5px;
-        }
-
-        .error {
-            padding: 10px;
-            margin-bottom: 15px;
-            background: #f8d7da;
-            color: #721c24;
-            border-radius: 5px;
-        }
-    </style>
+    <title>Thông tin cá nhân - BadmintonShop</title>
 </head>
 
-<body>
+<div class="row justify-content-center my-4">
+    <div class="col-md-10 col-lg-8">
+        <div class="card shadow-sm border-0 rounded-3">
+            <div class="card-header bg-dark text-white py-3 rounded-top d-flex justify-content-between align-items-center">
+                <h4 class="mb-0 text-warning"><i class="bi bi-person-badge-fill me-2"></i>Thông Tin Cá Nhân</h4>
+                <span class="badge bg-warning text-dark"><i class="bi bi-shield-check me-1"></i>Tài khoản ${user.role}</span>
+            </div>
+            <div class="card-body p-4">
 
-<div class="profile-container">
+                <c:if test="${param.success == '1'}">
+                    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i>Cập nhật thông tin cá nhân và ảnh đại diện thành công!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                </c:if>
 
-    <h2>Thông tin cá nhân</h2>
+                <c:if test="${not empty error}">
+                    <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>${error}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                </c:if>
 
-    <% if ("1".equals(request.getParameter("success"))) { %>
-        <div class="success">
-            Cập nhật thông tin thành công!
+                <form action="${pageContext.request.contextPath}/profile"
+                      method="post"
+                      enctype="multipart/form-data"
+                      class="needs-validation">
+
+                    <div class="row g-4">
+                        <!-- Left Column: Avatar & File Upload -->
+                        <div class="col-md-4 text-center border-end pe-md-4">
+                            <div class="mb-3 position-relative display-inline-block">
+                                <c:choose>
+                                    <c:when test="${not empty user.image}">
+                                        <img id="avatarPreview"
+                                             src="${pageContext.request.contextPath}/${user.image}"
+                                             alt="Avatar"
+                                             class="rounded-circle img-thumbnail shadow-sm border border-3 border-warning"
+                                             style="width: 150px; height: 150px; object-fit: cover;">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img id="avatarPreview"
+                                             src="https://via.placeholder.com/150?text=User"
+                                             alt="Avatar"
+                                             class="rounded-circle img-thumbnail shadow-sm border border-3 border-secondary"
+                                             style="width: 150px; height: 150px; object-fit: cover;">
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div class="mb-3">
+                                <label for="imageInput" class="form-label fw-bold small text-muted">
+                                    <i class="bi bi-camera-fill me-1"></i>Thay đổi ảnh đại diện
+                                </label>
+                                <input class="form-control form-control-sm"
+                                       type="file"
+                                       id="imageInput"
+                                       name="image"
+                                       accept="image/png, image/jpeg, image/jpg, image/webp"
+                                       onchange="previewImage(this)">
+                                <div class="form-text text-muted small">Hỗ trợ JPG, PNG, WEBP (Tối đa 5MB)</div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: User Profile Fields -->
+                        <div class="col-md-8 ps-md-4">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-muted"><i class="bi bi-person me-1"></i>Tên đăng nhập</label>
+                                <input type="text" class="form-control bg-light" value="${user.username}" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-muted"><i class="bi bi-envelope me-1"></i>Email địa chỉ</label>
+                                <input type="text" class="form-control bg-light" value="${user.email}" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold"><i class="bi bi-person-vcard-fill me-1 text-primary"></i>Họ và tên <span class="text-danger">*</span></label>
+                                <input type="text" name="fullName" class="form-control" value="${user.fullName}" required placeholder="Nhập họ và tên">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold"><i class="bi bi-telephone-fill me-1 text-primary"></i>Số điện thoại</label>
+                                <input type="tel" name="phone" class="form-control" value="${user.phone}" placeholder="Ví dụ: 0912345678" pattern="[0-9]{10}">
+                                <div class="form-text">Nhập số điện thoại 10 chữ số.</div>
+                            </div>
+
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-warning text-dark fw-bold py-2">
+                                    <i class="bi bi-floppy-fill me-1"></i>Cập nhật thông tin cá nhân
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
         </div>
-    <% } %>
-
-    <% if (request.getAttribute("error") != null) { %>
-        <div class="error">
-            <%= request.getAttribute("error") %>
-        </div>
-    <% } %>
-
-    <form action="${pageContext.request.contextPath}/profile"
-      method="post"
-      enctype="multipart/form-data">
-
-        <div class="form-group">
-            <label>Tên đăng nhập</label>
-
-            <input type="text"
-                   value="${user.username}"
-                   readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Họ và tên</label>
-
-            <input type="text"
-                   name="fullName"
-                   value="${user.fullName}"
-                   required>
-        </div>
-
-        <div class="form-group">
-            <label>Số điện thoại</label>
-
-            <input type="text"
-                   name="phone"
-                   value="${user.phone}">
-        </div>
-        
-       <c:if test="${not empty user.image}">
-    <div class="form-group">
-        <label>Ảnh hiện tại</label>
-
-        <img src="${pageContext.request.contextPath}/${user.image}"
-             width="120"
-             height="120"
-             style="object-fit: cover; border-radius: 8px;">
     </div>
-		</c:if>
-
-    <input type="file"
-           name="image"
-           accept="image/*">
-		</div>
-
-        <button type="submit">
-            Cập nhật thông tin
-        </button>
-
-    </form>
-
 </div>
 
-</body>
-</html>
+<script>
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('avatarPreview').src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
